@@ -1,0 +1,29 @@
+1. Generic recap
+2. Partial Function and Lift
+3. Implicits
+4. Type Aliases
+
+Multi Threaded
+1. JVM Thread
+    creating threads
+    synchronizing
+    wait and notify
+
+2. Scala Futures
+    Creating futures onComplete
+    monadic Future: map, flatmap, filter, for comprehension
+
+3. Promises
+    Completing futures manually
+
+Difficulties with Standard Thread Model
+1. OOP is not encapsulated
+    Race conditions ( with synchronized )
+2. Locks to the Rescue ?
+    Deadlocks
+    massive paing in distributed environments
+3. Delegating Tasks
+    Hard, error prone
+    Never feels first class
+4. Dealing with error
+    Very hard

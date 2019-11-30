@@ -1,5 +1,8 @@
 package com.udemy.akka.essentials
 
+import akka.actor.ActorSystem
+
 object HelloWorld extends App {
-  println(" Hello World ");
+  val actorSystem = ActorSystem("HelloAkka")
+  println(actorSystem.name)
 }

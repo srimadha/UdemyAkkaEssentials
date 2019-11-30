@@ -1,0 +1,9 @@
+JVM with Akka
+1. Akka Essentials --> ( This Course )
+2. Akka Persistence
+3. Akka Streams
+4, Akka HTTP
+5. Akka Remoting and Clustering
+6. Akka Serialization
+
+
