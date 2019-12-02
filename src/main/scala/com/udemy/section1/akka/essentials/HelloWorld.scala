@@ -1,4 +1,4 @@
-package com.udemy.akka.essentials
+package com.udemy.section1.akka.essentials
 
 import akka.actor.ActorSystem
 

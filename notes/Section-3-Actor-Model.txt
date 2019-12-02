@@ -1,0 +1,97 @@
+Actors
+
+Traditional Objects
+-> we store their state as data
+-> we call their methods
+
+With Actors
+-> we store their state as data
+-> we send messages to them asynchronously
+
+Actors are objects we cant access directly, but can only send messages to
+
+Actors messages are asynchronous in nature
+-> it takes time for message to travel
+
+Actors are uniquely indentifyable
+Messages are asynchronous
+Each Actor respond based on their behavior
+Actors are really encapsulated
+
+Every Actor type derives from Actor trait
+trait Actor {
+    def receive: Receive <- message handler object //PartialFunction[Any, Unit]
+}
+
+Actor Infrastructure
+val system = ActorSystem("AnActorSystem")
+
+Creating actors
+val actor = system.actorOf(Props[MyActor], "myActorName")
+
+Sending Messages
+actor ! "hello" ! => tell
+message should be immutable and serializable
+
+Actor principles upheld
+1. full encapsulation
+2. full parllelism
+3. non-blocking interaction via messages
+
+Actor References
+. can be sent
+. the self reference
+
+How to reply ??? Use sender()
+
+
+Valid Questions
+1. Can we assume ordering of messages
+2. Aren't we causing race conditions
+3. What Does "asynchronous actually mean"
+4. How does all this work
+
+Akka has a thread pool that is shares with actors
+Communication
+Sending a message
+-> Message is enqueued in actors mailbox
+-> Thread safe
+
+Processing a message
+-> A thread is scheduled to run this actor
+-> messages are extracted from the mailbox in order
+-> The thread invokes the handler on each message
+-> At some point actor is scheduled
+
+Guarantees
+Only on thread operates on an actor at any time
+-> actors are effectively single threaded
+-> no locks needed
+Message delivery guarantees
+-> at most once delivery
+-> for any sender-receiver pair, the message order is maintained
+
+
+Changing actor behavior
+context.become( anotherHandler, true )
+true replaces current handler
+false to stack newhandler on top // use unbecome to pop
+
+Actors can create other actors
+guardian
+1. system
+2. user
+3. root
+
+Actor Paths
+Actor Selection
+Actor encapsulation dangers
+ Passing around Actor This is a no no, use ActorRef instead
+
+Actor Logging
+1. Logging is asynchronous
+2. Akka logging is done using Actor
+3. You can change the slf4j ( popular logger )
+
+Akka Configuration
+
