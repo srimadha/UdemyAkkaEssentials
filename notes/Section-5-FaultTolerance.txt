@@ -1,0 +1,11 @@
+Stopping Actors
+using context.stop
+1. context.stop(childActor)
+2. context.stop(self) sucide
+
+Using special messages
+actor ! PoisonPill
+actor ! Kill <- Brutal raises kill exception
+
+Death Watch
+context.watch(actor)

@@ -21,7 +21,7 @@ Difficulties with Standard Thread Model
     Race conditions ( with synchronized )
 2. Locks to the Rescue ?
     Deadlocks
-    massive paing in distributed environments
+    massive pain in distributed environments
 3. Delegating Tasks
     Hard, error prone
     Never feels first class

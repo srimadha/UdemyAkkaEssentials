@@ -39,7 +39,7 @@ var task: Runnable = null
 val runningThread: Thread = new Thread( () => {
   while(true){
     while( task == null){
-      runningThread.synchronized{
+      runningThread.synchronized {
         println("BG: Waiting for a task")
         runningThread.wait()
       }
@@ -54,7 +54,8 @@ val runningThread: Thread = new Thread( () => {
 })
 
 def delegateToBackGround( r: Runnable ) = {
-  if( task == null ) task = r
+  if( task == null )
+    task = r
   runningThread.synchronized{
     runningThread.notify
   }

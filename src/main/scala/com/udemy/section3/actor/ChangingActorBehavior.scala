@@ -45,12 +45,12 @@ object ChangingActorBehavior extends App {
     override def receive: Receive = happyReceive
 
     def happyReceive: Receive = {
-      case Food(VEG) => context become ( sadReceive, false ) // With false, receive handlers is maintained in in stack, stack push
+      case Food(VEG) => context become ( sadReceive ) // With false, receive handlers is maintained in in stack, stack push
       case Food(CHOC) =>
       case Ask(_) => sender() ! KidAccept
     }
     def sadReceive: Receive = {
-      case Food(VEG) => context become ( sadReceive, false )
+      case Food(VEG) => context become ( sadReceive )
       case Food(CHOC) => context unbecome // stack.pop
       case Ask(_) => sender() ! KidTantrum
     }
@@ -63,6 +63,7 @@ object ChangingActorBehavior extends App {
 
     override def receive: Receive = {
       case MomStart(kid) => {
+        kid ! Food(VEG)
         kid ! Food(VEG)
         kid ! Food(VEG)
         kid ! Food(CHOC)

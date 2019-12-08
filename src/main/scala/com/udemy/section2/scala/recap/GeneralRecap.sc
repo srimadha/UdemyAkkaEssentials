@@ -51,12 +51,13 @@ Person("Sri").greet
 
 implicit def fromStringToPerson(name: String): Person = Person(name)
 
-"Meg".greet
+"Megh".greet
 
 // with implicit classes
 implicit class Dog( name: String){
-  def bark = println("Bark")
+  def bark = println(s"$name -> Bark")
 }
+
 "Lassie".bark
 
 //Implicits can be confusing without organizing
