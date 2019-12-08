@@ -9,3 +9,69 @@ actor ! Kill <- Brutal raises kill exception
 
 Death Watch
 context.watch(actor)
+
+Actor LifeCycle
+1. Actor Instance
+    Has methods
+    May have an Inernal state
+
+2. Actor reference / Incarnation
+    UUID
+    created with actorOf
+    contains one actor instance
+    has mailbox and can reveive messages
+
+3. Actor Path
+    may or may not have and Actorref inside
+
+
+Life Cycle
+Start
+Suspended
+resumed
+restarted
+stopped
+
+Restarting steps
+1. Suspend
+2. Swap the actor instance
+    old instance calls preRestart
+    replace actor instance
+    new instance calls post restart
+3. resume
+
+Internal state is destroyed on restart
+
+Stopping grees the actor ref within a path
+. call postStop
+. all watching actors receive terminated
+
+
+Parents Duty
+. Its fine if actors crash
+. Parents must decide upon their chidlrens failure
+
+When an actor fails
+. suspends its children
+. sends a special message to parent
+
+The parent can then decide to
+. resume the actor
+. restart the actor ( default )
+. stop the actor
+. escalate and fail itself
+
+BackOff Supervisor
+Pain: the repeated restarts of actors
+
+Restarting actors immediately might do more harm than good
+
+So use backoff supervisor which can be configured to restart your actors with exponential delays
+
+
+
+
+
+
+
+
