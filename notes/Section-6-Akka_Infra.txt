@@ -1,0 +1,11 @@
+Akka Infra
+
+1. Schedulers and Timer
+2. Routers
+    round-robin
+    random
+    smallest mailbox
+    broadcast
+    scatter-gather-first
+    tail-chopping
+    consistent-hashing
